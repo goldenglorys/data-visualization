@@ -4,24 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Data Driven Documents</title>
-    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.6.2/d3.min.js"
+      integrity="sha512-L2eTGYYQqzK5YozYyUVrJKj2ZRnHE3QzV1+1yY6VXHExStF3potRZyEcD/B6sTOe04xYxB21QNLmVTQFcgwovg=="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <div>xncjns</div>
+    <div id="container">bhb</div>
   </body>
   <script>
-    d3.selectAll("div")
-      .on("mouseover", function () {
-        d3.select(this).style("background-color", "orange");
+    var svg = d3
+      .select("body")
+      .append("svg")
+      .attr("width", 500)
+      .attr("height", 500);
 
-        // Get current event info
-        console.log(d3.event);
+    var bar1 = svg
+      .append("rect")
+      .attr("fill", "blue")
+      .attr("x", 100)
+      .attr("y", 20)
+      .attr("height", 20)
+      .attr("width", 10);
 
-        // Get x & y co-ordinates
-        console.log(d3.mouse(this));
-      })
-      .on("mouseout", function () {
-        d3.select(this).style("background-color", "steelblue");
-      });
+    var bar2 = svg
+      .append("rect")
+      .attr("fill", "blue")
+      .attr("x", 120)
+      .attr("y", 20)
+      .attr("height", 20)
+      .attr("width", 10);
+
+    update();
+
+    function update() {
+      bar1.transition().ease(d3.easeLinear).duration(2000).attr("height", 100);
+
+      bar2
+        .transition()
+        .ease(d3.easeLinear)
+        .duration(2000)
+        .delay(2000)
+        .attr("height", 100);
+    }
   </script>
 </html>
